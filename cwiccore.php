@@ -58,7 +58,7 @@ function cwiccore()
             }
         }
 
-        function cwicly_plugin_classes_example($plugin_classes)
+        function cwicly_plugin_classes_core($plugin_classes)
         {
             global $coreClasses;
 
@@ -86,9 +86,9 @@ function cwiccore()
             return $plugin_classes;
         }
 
-        add_filter("cwicly_plugin_classes", "cwicly_plugin_classes_example", 10, 1);
+        add_filter("cwicly_plugin_classes", "cwicly_plugin_classes_core", 10, 1);
 
-        function cwicly_global_colors_custom($global_colors)
+        function cwicly_global_colors_core($global_colors)
         {
             global $coreColors;
 
@@ -131,6 +131,6 @@ function cwiccore()
             );
             return $global_colors;
         }
-        add_filter('cwicly_global_colors', 'cwicly_global_colors_custom', 10, 1);
+        add_filter('cwicly_global_colors', 'cwicly_global_colors_core', 10, 1);
     }
 }
