@@ -90,27 +90,23 @@ function cwiccore()
 
         function cwicly_global_colors_custom($global_colors)
         {
-            global $coreColors; // Assuming this is your global variable containing color styles
+            global $coreColors;
 
             $base_colors = [];
             $palettes = [];
 
-            // Loop through each color style
             foreach ($coreColors["colorStyles"] as $color) {
-                // Extract the base color name (prefix before the '-')
+
                 $parts = explode('-', $color);
                 $base_color = $parts[0];
 
-                // Add base colors to array (unique)
                 if (!in_array($base_color, $base_colors)) {
                     $base_colors[] = $base_color;
                 }
 
-                // Add color to the appropriate palette
                 $palettes[$base_color][] = 'var(--' . $color . ')';
             }
 
-            // Create the colors array for base colors
             $colors_array = array_map(function ($color) {
                 return array(
                     'name' => ucfirst($color),
@@ -118,10 +114,9 @@ function cwiccore()
                 );
             }, $base_colors);
 
-            // Create palettes array
             $palettes_array = [];
             foreach ($palettes as $key => $colors) {
-                if (count($colors) > 1) { // Ensure there are variants to create a palette
+                if (count($colors) > 1) {
                     $palettes_array[] = array(
                         'name' => ucfirst($key),
                         'colors' => $colors,
@@ -129,7 +124,6 @@ function cwiccore()
                 }
             }
 
-            // Add colors and palettes under a single global color key
             $global_colors['coreFrameworkColors'] = array(
                 'name' => 'Core Colors',
                 'colors' => $colors_array,
